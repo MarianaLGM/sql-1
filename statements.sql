@@ -90,6 +90,12 @@ FROM  test.usuarios_lenguajes
 GROUP BY lenguaje
 ORDER BY total DESC;
 
+-- Ejercicio 22: Encontrar el lenguaje con más caracteres.
+-- Tu respuesta aquí
+SELECT LENGTH(lenguaje), lenguaje 
+FROM test.usuarios_lenguajes 
+ORDER BY LENGTH(lenguaje) DESC;
+
 -- Ejercicio 23: Seleccionar los usuarios y mostrar la concatenación de su nombre y apellido.
 -- Tu respuesta aquí
 SELECT CONCAT (nombre, apellido) AS Result
@@ -147,7 +153,7 @@ FROM test.usuarios_lenguajes WHERE email LIKE 'P%' AND edad < 28;
 
 
 
-
+////////////////////////////////////////////REVISAR Y ACABAR DE COMPLETAR///////////////////////////////////////////
 
 -- Ejercicio 14: Encontrar el lenguaje más popular entre los usuarios menores de 30 años.
 -- Tu respuesta aquí
@@ -156,11 +162,6 @@ SELECT * FROM test.usuarios_lenguajes WHERE edad <30
 SELECT COUNT(lenguaje) AS total
 FROM  test.usuarios_lenguajes
 GROUP BY lenguaje
-
--- Ejercicio 22: Encontrar el lenguaje con más caracteres.
--- Tu respuesta aquí
-SELECT lenguaje FROM test.usuarios_lenguajes;
-SELECT LEN('')
 
 -- Ejercicio 24: Contar cuántos lenguajes diferentes conocen los usuarios mayores de 25 años. 
 -- Tu respuesta aquí
@@ -179,22 +180,22 @@ GROUP BY edad;
 -- Ejercicio 26: Encontrar el usuario con el lenguaje con mayor número de carácteres y que tenga una edad menor de 30 años. 
 -- Tu respuesta aquí
 SELECT * FROM test.usuarios_lenguajes WHERE edad <30
-LENGUAJE CON MAS CARACTERES SELECT LENGTH('')
+SELECT LENGTH(lenguaje), lenguaje FROM test.usuarios_lenguajes ORDER BY LENGTH(lenguaje) DESC;
 
 -- Ejercicio 29: Seleccionar los usuarios que tienen lenguajes que empiecen por 'J' y mostrar solo el que tiene menos caracteres. 
 -- Tu respuesta aquí
 SELECT * FROM test.usuarios_lenguajes WHERE lenguaje LIKE 'J%'
-LENGUAJE CON MENOS CARACTERES SELECT LEN('')
+SELECT LENGTH(lenguaje), lenguaje FROM test.usuarios_lenguajes ORDER BY LENGTH(lenguaje) ASC;
 
 -- Ejercicio 30: Encontrar el usuario con edad mayor a 30 y que sabe el lenguaje con menos caracteres.
 -- Tu respuesta aquí
 SELECT * FROM test.usuarios_lenguajes WHERE edad >30
-LENGUAJE CON MENOS CARACTERES SELECT LEN('')
+SELECT LENGTH(lenguaje), lenguaje FROM test.usuarios_lenguajes ORDER BY LENGTH(lenguaje) ASC;
 
 -- Ejercicio 34: Encontrar el lenguaje con más caracteres entre los usuarios que tienen al menos 30 años.
 -- Tu respuesta aquí
 SELECT * FROM test.usuarios_lenguajes WHERE edad >=30
-LENGUAJE CON MAS CARACTERES SELECT LEN('')
+SELECT LENGTH(lenguaje), lenguaje FROM test.usuarios_lenguajes ORDER BY LENGTH(lenguaje) DESC;
 
 -- Ejercicio 35: Seleccionar los usuarios y mostrar la diferencia entre su edad y la edad promedio de todos los usuarios
 -- Tu respuesta aquí
@@ -205,5 +206,4 @@ diferencia entre edad promedio y edad usuarios //PTE ME FALTA LA DIF EDAD Y PROM
 -- Ejercicio 37: Seleccionar los usuarios que tienen al menos un lenguaje asociado y mostrar la longitud de su nombre. 
 -- Tu respuesta aquí
 SELECT * FROM test.usuarios_lenguajes WHERE lenguaje IS NOT NULL;
-SELECT LEN('')
-FROM test.usuarios_lenguajes;///pte mostrar longitud;
+SELECT LENGTH(lenguaje), lenguaje FROM test.usuarios_lenguajes
