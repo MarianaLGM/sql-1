@@ -46,6 +46,7 @@ CREATE TABLE usuarios_lenguajes (
     lenguaje VARCHAR(50) NOT NULL
 );
 
+
 -- Insertar datos
 INSERT INTO usuarios_lenguajes (nombre, apellido, email, edad, lenguaje) VALUES
 ('Juan', 'Gomez', 'juan.gomez@example.com', 28, 'Java'),
