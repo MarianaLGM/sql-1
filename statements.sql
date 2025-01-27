@@ -111,10 +111,11 @@ WHERE lenguaje = 'CSS' AND edad < 30;
 
 -- Ejercicio 21: Seleccionar los usuarios que tienen al menos un lenguaje asociado y mostrar la cantidad de lenguajes que tienen.
 -- Tu respuesta aquí
-SELECT nombre, apellido, email, edad, lenguaje COUNT(*) AS total**************************************************************TODOS LOS USUARIOS
+SELECT COUNT(*) lenguaje AS total
 FROM  test.usuarios_lenguajes
 GROUP BY lenguaje
 ORDER BY total DESC;
+
 
 -- Ejercicio 22: Encontrar el lenguaje con más caracteres.
 -- Tu respuesta aquí
@@ -149,9 +150,10 @@ HAVING COUNT(*) > 1;
 
 -- Ejercicio 26: Encontrar el usuario con el lenguaje con mayor número de carácteres y que tenga una edad menor de 30 años. 
 -- Tu respuesta aquí
-SELECT nombre, apellido, email, edad, lenguaje FROM test.usuarios_lenguajes 
+--he puesto que salgan 3 resultados porque hay 3 usuarios con el mimso número de carácteres(6)
+SELECT * FROM test.usuarios_lenguajes 
 WHERE edad <30 
-ORDER BY LENGTH (lenguaje) DESC LIMIT 3; ////////////////////////////hay 3 usuarios que tienen 6 caracteres y sólo sale uno/////////
+ORDER BY LENGTH (lenguaje) DESC LIMIT 3;
 
 
 -- Ejercicio 27: Seleccionar los usuarios que tienen al menos un lenguaje asociado y mostrar sus emails.
@@ -210,8 +212,10 @@ LIMIT 1;
 
 -- Ejercicio 35: Seleccionar los usuarios y mostrar la diferencia entre su edad y la edad promedio de todos los usuarios
 -- Tu respuesta aquí
-SELECT AVG(edad)FROM test.usuarios_lenguajes AS edadPromedio
-diferencia entre edad promedio y edad usuarios /////////////////////////////////////////////////PTE ME FALTA LA DIF EDAD Y PROMEDIO
+
+SELECT edad - (SELECT AVG(edad)FROM test.usuarios_lenguajes AS edadPromedio) 
+AS diferencia 
+FROM test.usuarios_lenguajes;
 
 -- Ejercicio 36: Contar cuántos usuarios tienen un lenguaje asociado que contiene la palabra 'Script'.
 -- Tu respuesta aquí
@@ -234,7 +238,7 @@ WHERE id_usuario =(SELECT MAX(id_usuario) FROM test.usuarios_lenguajes);
 -- Ejercicio 39: Seleccionar los usuarios y mostrar la suma de sus edades. 
 -- Tu respuesta aquí
 
-SELECT SUM(edad)FROM test.usuarios_lenguajes AS total;////////////////////////////SOLO MUESTRA LA SUMA DE EDADES FALTAN USUARIOS
+SELECT SUM(edad)FROM test.usuarios_lenguajes AS total;
 
 -- Ejercicio 40: Contar cuántos usuarios tienen un lenguaje asociado que comienza con la letra 'P' y tienen menos de 28 años.
 -- Tu respuesta aquí
